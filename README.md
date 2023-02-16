@@ -506,3 +506,14 @@ If you need direct support you can contact us at info@bridgecrew.io.
 
 ## Python Version Support
 We follow the official support cycle of Python and we use automated tests for all supported versions of Python. This means we currently support Python 3.7 - 3.11, inclusive. Note that Python 3.7 is reaching EOL on June 2023. After that time, we will have a short grace period where we will continue 3.7 support until September 2023, and then it will no longer be considered supported for Checkov. If you run into any issues with any non-EOL Python version, please open an Issue.
+
+## Limitations Using ARM templates for Security Checks
+
+ARM templates schema is defined by Microsoft and specifies the properties that are allowed for each resource type. In some cases, not all the properties of a resource type are available in the schema. This could be because the property is not yet fully supported, or it may not be exposed through the ARM API.
+
+ARM templates are designed to provision and manage Azure resources, not to report on their current state or configuration. The ARM template is typically used to deploy a new or updated resource, rather than to query or report on existing resources. In cases where you need to retrieve information about an existing resource, it's often necessary to use additional tools and APIs, such as the Azure CLI or PowerShell. 
+
+As an example, the ARM templates exported for Azure App Service does not contain auth info, i.e., whether app service enabled authentication or not (as of 2/16/2023). Using CLI method below can see if authentication is enabled or not.
+
+>az webapp list --query [*].id
+>az webapp auth show --ids  "/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.Web/sites/xxx" --query enabled
