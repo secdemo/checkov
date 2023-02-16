@@ -75,6 +75,7 @@ pip3 install checkov
 ```
 
 Installation on windows:
+
 python setup.py install
 
 
