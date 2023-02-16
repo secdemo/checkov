@@ -75,9 +75,9 @@ pip3 install checkov
 ```
 
 Installation on windows:
-
+```sh
 python setup.py install
-
+```
 
 Installation on Alpine:
 ```sh
