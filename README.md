@@ -74,6 +74,10 @@ Scheduled scan result in Jenkins
 pip3 install checkov
 ```
 
+Installation on windows:
+python setup.py install
+
+
 Installation on Alpine:
 ```sh
 pip3 install --upgrade pip && pip3 install --upgrade setuptools
